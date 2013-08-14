@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+  <title>ExGile Project Management System</title>
+  <!-- JQuery CSS Lib -->
+  <link href="./css/redmond/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+  
+  <!-- Bootstrap CSS Lib -->
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <link href="./css/bootstrap-responsive.min.css" rel="stylesheet">
+  
+  <!-- JQuery Lib -->
+  <script src="./js/jquery-1.9.1.js"></script>
+  <script src="./js/jquery-ui-1.10.3.custom.js"></script>
+  
+  <!-- Bootstrap Lib -->
+  <script type="text/javascript" src="./js/bootstrap.js"></script>
+  
+  <!-- Website fav icon -->
+  <link rel="shortcut icon" href="./img/fav.jpg">
+  
+  <!-- Customerized CSS -->
+  <link href="./css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<!-- HEADER -->
+	<div class="header">
+		<span class='logo'>ExGile Project Management System</span>
+		<a href="#"><div id="header-login-link" class="header-box">
+		<div class="btn-group">
+			<a class="btn btn-primary" href="javascript:showLogin()"><i class="icon-user icon-white"></i> Sign In</a>
+		</div>
+		</div>
+		</a>
+	</div>
+	
+	<!-- CENTER left blank -->
+	<div class="left-blank center">
+	</div>
+	
+	<!-- CENTER -->
+	<div class="middle center">
+	<!-- Carousel -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="./img/slide-01.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>1 Stop Project Management</h1>
+              <p class="lead">ExGile Project Management System provides effective functions to manage your projects.</p>
+              <a class="btn btn-large btn-primary" href="#">Sign up today</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="./img/slide-02.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Responsive User Interface</h1>
+              <p class="lead">By using advanced javascript frameworks, ExGile Project Management System gives you a responsive user interface.</p>
+              <a class="btn btn-large btn-primary" href="#">Learn more</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="./img/slide-03.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>And Much More</h1>
+              <p class="lead">Easy to use and collaborate with your team.</p>
+              <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="http://twitter.github.io/bootstrap/examples/carousel.html#myCarousel" data-slide="prev">‹</a>
+      <a class="right carousel-control" href="http://twitter.github.io/bootstrap/examples/carousel.html#myCarousel" data-slide="next">›</a>
+    </div><!-- /.carousel -->
+	
+	<!-- Tabs -->
+	<div id="tabs" class="hide">
+		<ul id="project-list-ul">
+		</ul>
+	</div>
+	
+	</div>
+	<div class="right-blank center"></div>
+	
+	<!-- FOOTER -->
+	<div class="footer">
+	</div>
+  
+    <!-- LOGIN DIV -->
+	<div id="login-dialog" class="container hide">
+        Email: <input id="email" type="text" class="input-block-level" placeholder="Email address" value="msimpson@xyzcorp.com">
+        Password: <input id="password" type="password" class="input-block-level" placeholder="Password">
+		<button id="signInButton" class="btn btn-large btn-primary">Sign in</button>
+		<div id="login-message" class="hide"></div>
+	</div>
+	
+	<!-- USER INFORMATION DIV -->
+	<div id="user-profile-dialog" class="hide">
+		<input id="user-profile-id" type="hidden">
+		First Name:<br> <input id="user-profile-first-name" type="text" class="input-large"><br>
+		Last Name:<br> <input id="user-profile-last-name" type="text" class="input-large"><br>
+		Email Address:<br> <div id="user-profile-email-div"><input id="user-profile-email" type="text" class="input-xlarge"></div>
+		Title:<br> <input id="user-profile-title" type="text" class="input-block-large"><br>
+		Password:<br> <input id="user-profile-password" type="password" class="input-large"><br>
+		<button id="close-profile-button" class="btn btn-primary" onclick="javascript:closeDialog('user-profile-dialog');return false;">Cancel</button>
+		&nbsp;&nbsp;<button id="update-profile-submit-button" class="btn btn-primary">Update Profile</button><br>
+		<div id="update-profile-message" class="hide"></div>
+	</div>
+	
+	<!-- Processing Dialog -->
+	<div id="processing-dialog" class="hide"></div>
+	
+	<!-- Edit Project Description Dialog -->
+	<div id="edit-project-description-dialog" class="hide">
+		<textarea rows="6" class="input-xlarge"></textarea>
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('edit-project-description-dialog');return false;">Cancel</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:saveProjectDescription()">Save</button>
+	</div>
+	
+	<!-- Edit Project Billing Code Dialog -->
+	<div id="edit-project-billing-code-dialog" class="hide">
+		<input class="input-xlarge" type="text">
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('edit-project-billing-code-dialog');return false;">Cancel</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:saveProjectBillingCode()">Save</button>
+	</div>
+	
+	<!-- Edit Project Client Name Dialog -->
+	<div id="edit-project-client-name-dialog" class="hide">
+		<input class="input-xlarge" type="text">
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('edit-project-client-name-dialog');return false;">Cancel</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:saveProjectClientName()">Save</button>
+	</div>
+	
+	<!-- Edit Project Time Frame Dialog -->
+	<div id="edit-project-time-frame-dialog" class="hide">
+		<input class="input-xlarge" type="text">
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('edit-project-time-frame-dialog');return false;">Cancel</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:saveProjectTimeFrame()">Save</button>
+	</div>
+	
+	<!-- Operation Success Dialog -->
+	<div id="operation-success-dialog" class="hide">
+		<img src='img/done.jpg'/><br>
+		<div></div><br>
+		<button class='btn btn-primary' onclick="closeDialog('operation-success-dialog');return false;">Close</button>
+	</div>
+	
+	<!-- Confirm logout Dialog -->
+	<div id="confirm-logout-dialog" class="hide">
+		<div>Are you sure to logout?</div>
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('confirm-logout-dialog');return false;">No</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:continueToLogout()">Yes</button>
+	</div>
+	
+	<!-- Confirm delete milestone Dialog -->
+	<div id="confirm-delete-milestone-dialog" class="hide">
+		<div>Are you sure to delete this milestone?</div>
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('confirm-delete-milestone-dialog');return false;">No</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:continueToDeleteMilestone()">Yes</button>
+	</div>
+	
+	<!-- Update milestone Dialog -->
+	<div id="update-milestone-dialog" class="hide">
+		Milestone Date: <input id="update-milestone-date" class="input-large" type="date">
+		Milestone: <textarea id="update-milestone-description" rows="6" class="input-xlarge"></textarea>
+	
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('update-milestone-dialog');return false;">Cancel</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:continueToUpdateMilestone()">Update</button>
+	</div>
+	
+	<!-- Confirm delete comment Dialog -->
+	<div id="confirm-delete-comment-dialog" class="hide">
+		<div>Are you sure to delete this comment?</div>
+
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('confirm-delete-comment-dialog');return false;">No</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:continueToDeleteComment()">Yes</button>
+	</div>
+	
+	<!-- Update comment Dialog -->
+	<div id="update-comment-dialog" class="hide">
+		Comment: <textarea id="update-comment-description" rows="6" class="input-xlarge"></textarea>
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('update-comment-dialog');return false;">Cancel</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:continueToUpdateComment()">Update</button>
+	</div>
+	
+	<!-- Add milestone Dialog -->
+	<div id="add-milestone-dialog" class="hide">
+		Milestone Date: <input id="add-milestone-date" class="input-large" type="date">
+		Milestone: <textarea id="add-milestone-description" rows="6" class="input-xlarge"></textarea>
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('add-milestone-dialog');return false;">Cancel</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:addMilestone()">Add Milestone</button>
+	</div>
+	
+	<!-- Add comment Dialog -->
+	<div id="add-comment-dialog" class="hide">
+		Comment: <textarea id="add-comment-description" rows="6" class="input-xlarge"></textarea>
+		<button class="btn btn-primary" type="button" onclick="javascript:closeDialog('add-comment-dialog');return false;">Cancel</button>
+		<button class="btn btn-primary" type="button" onclick="javascript:addComment()">Add Comment</button>
+	</div>
+	
+	<!-- Hidden fields to store global values -->
+	<input id='projectIDString' type='hidden' value=""/>
+	<input id='projectID' type='hidden' value=""/>
+	
+	<input id='milestoneID' type='hidden' value=""/>
+	<input id='milestoneDivID' type='hidden' value=""/>
+	
+	<input id='commentID' type='hidden' value=""/>
+	<input id='commentDivID' type='hidden' value=""/>
+	
+</body>
+<script type="text/javascript" src="./js/script.js"></script>
+</html> 
